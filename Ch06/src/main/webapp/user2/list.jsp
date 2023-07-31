@@ -48,7 +48,7 @@
 	<body>
 		<h3>User2 목록</h3>
 		<a href="/Ch06/1_JDBC.jsp">처음으로</a>
-		<a href="/Ch06/user2/register.jsp">User1 등록</a>
+		<a href="/Ch06/user2/register.jsp">User2 등록</a>
 		
 		<table border="1">
 			<tr>

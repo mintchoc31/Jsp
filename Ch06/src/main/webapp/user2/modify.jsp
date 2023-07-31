@@ -12,11 +12,11 @@
 	String uid = request.getParameter("uid");
 	
 	//데이터베이스 처리
-			String host = "jdbc:mysql://127.0.0.1:3306/userdb";
-			String user = "root";
-			String pass = "1234";
-			
-			User2VO vo = new User2VO();
+	String host = "jdbc:mysql://127.0.0.1:3306/userdb";
+	String user = "root";
+	String pass = "1234";
+	
+	User2VO vo = new User2VO();
 	
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -52,7 +52,7 @@
 	<body>
 	<h3>User2 수정</h3>
 		<a href="/Ch06/1_JDBC.jsp">처음으로</a>
-		<a href="/Ch06/user2/list.jsp">User1 목록</a>
+		<a href="/Ch06/user2/list.jsp">User2 목록</a>
 		
 		<form action="/Ch06/user2/modifyProc.jsp" method="post">
 			<table border="1">
