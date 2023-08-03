@@ -9,7 +9,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 
-	String uid = request.getParameter("uid");
+	String email = request.getParameter("email");
 	
 	int result = 0;
 	
@@ -19,8 +19,8 @@
 		DataSource ds = (DataSource) ctx.lookup("jdbc/Jboard");
 		
 		Connection conn = ds.getConnection();
-		PreparedStatement psmt = conn.prepareStatement("SELECT COUNT(*) FROM `User` WHERE `uid`=?");
-		psmt.setString(1, uid);
+		PreparedStatement psmt = conn.prepareStatement("SELECT COUNT(*) FROM `User` WHERE `email`=?");
+		psmt.setString(1, email);
 		
 		ResultSet rs = psmt.executeQuery();
 		
