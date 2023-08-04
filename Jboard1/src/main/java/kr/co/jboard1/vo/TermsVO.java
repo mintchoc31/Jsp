@@ -10,6 +10,7 @@ public class TermsVO {
 	public void setTerms(String terms) {
 		this.terms = terms;
 	}
+	
 	public String getPrivacy() {
 		return privacy;
 	}

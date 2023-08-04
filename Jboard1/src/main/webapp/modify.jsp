@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글수정</title>
+    <title>글 수정</title>
     <link rel="stylesheet" href="./css/style.css">    
 </head>
 <body>
