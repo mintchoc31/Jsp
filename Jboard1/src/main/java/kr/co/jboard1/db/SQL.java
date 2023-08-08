@@ -22,17 +22,43 @@ public class SQL {
 	public static final String SELECT_COUNT_NICK  = "SELECT COUNT(*) FROM `User` WHERE `nick`=?";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `email`=?";
 	public static final String SELECT_COUNT_HP    = "SELECT COUNT(*) FROM `User` WHERE `hp`=?";
-	public static final String SELECT_TERMS    = "SELECT * FROM `Terms`";
+	public static final String SELECT_TERMS    	  = "SELECT * FROM `Terms`";
 	
 	// Article
 	public final static String INSERT_ARTICLE = "INSERT INTO `Article` SET "
-												+ "`title`=?,"
+												+ "`title`=?, "
 												+ "`content`=?,"
 												+ "`writer`=?,"
 												+ "`regip`=?,"
 												+ "`rdate`=NOW()";
-
-	public final static String SELECT_ARTICLES = "SELECT * FROM `Article`" ;
-												
+	
+	public final static String SELECT_ARTICLES = "SELECT "
+											   + "a.*, "
+											   + "b.`nick` "
+											   + "FROM `Article` AS a "
+											   + "JOIN `User` AS b ON a.writer = b.uid "
+											   + "ORDER BY `no` DESC "
+											   + "LIMIT ?, 10";
+	
+	public final static String SELECT_COUNT_TOTAL =  "SELECT COUNT(*) FROM `Article`";
+												  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			
+	
 	
 }
