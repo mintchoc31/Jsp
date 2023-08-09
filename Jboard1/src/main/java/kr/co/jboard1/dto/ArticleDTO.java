@@ -35,6 +35,9 @@ public class ArticleDTO {
 	public void setParent(int parent) {
 		this.parent = parent;
 	}
+	public void setParent(String parent) {
+		this.parent = Integer.parseInt(parent); // 오버로드
+	}
 	public int getComment() {
 		return comment;
 	}
