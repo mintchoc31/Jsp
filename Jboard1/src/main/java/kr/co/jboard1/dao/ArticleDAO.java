@@ -50,7 +50,6 @@ public class ArticleDAO extends DBHelper {
 				dto.setRdate(rs.getString("rdate"));
 			}
 			close();
-			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -93,11 +92,31 @@ public class ArticleDAO extends DBHelper {
 		return articles;
 	}
 	
-	public void updateArticle(ArticleDTO vo) {
+	public void updateArticle(ArticleDTO dto) {
 		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setInt(3, dto.getNo());
+			psmt.executeUpdate();
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-	
-	public void deleteArticle(int no) {
+	public void deleteArticle(String no) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_ARTICLE);
+			psmt.setString(1, no);
+			psmt.setString(2, no);
+			psmt.executeUpdate(); 
+			close();	
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -146,8 +165,7 @@ public class ArticleDAO extends DBHelper {
 				dto.setRdate(rs.getString(11));
 				dto.setNick(rs.getString(12));
 				
-				comments.add(dto);
-				
+				comments.add(dto);			
 			}
 			close();
 			
@@ -168,22 +186,44 @@ public class ArticleDAO extends DBHelper {
 			psmt.setString(4, dto.getRegip());
 			psmt.executeUpdate();
 			close();
-			
-		}catch(Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-		public void updateArticleForComment(String no) {
-			try {
-				conn = getConnection();
-				psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE_FOR_COMMENT);
-				psmt.setString(1, no);
-				psmt.executeUpdate();
-				close();
-				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		
+	
+	public void updateArticleForCommentPlus(String no) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE_FOR_COMMENT_PLUS);
+			psmt.setString(1, no);
+			psmt.executeUpdate();
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateArticleForCommentMinus(String no) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE_FOR_COMMENT_MINUS);
+			psmt.setString(1, no);
+			psmt.executeUpdate();
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void deleteComment(String no) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.DELETE_COMMENT);
+			psmt.setString(1, no);
+			psmt.executeUpdate();
+			close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

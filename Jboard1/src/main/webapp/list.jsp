@@ -82,7 +82,7 @@ request.setCharacterEncoding("UTF-8");
         <!-- 페이지 네비게이션 -->
         <div class="paging">
         	<% if(pageGroupStart > 1){ %>
-            <a href="/Jboard1/list.jsp?pg=<%=pageGroupStart - 1 %>" class="prev">이전</a>
+            <a href="/Jboard1/list.jsp?pg=<%= pageGroupStart - 1 %>" class="prev">이전</a>
             <% } %>
             <% for(int i=pageGroupStart ; i<=pageGroupEnd ; i++){ %>
             <a href="/Jboard1/list.jsp?pg=<%= i %>" class="num <%= (currentPage == i)?"current":"" %>"><%= i %></a>                

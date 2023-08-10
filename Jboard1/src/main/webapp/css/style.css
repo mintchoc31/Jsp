@@ -348,8 +348,7 @@ main {
     margin-top: 10px;
     padding-top: 10px;
 }
-
-.view > .commentList > article > textarea {
+.view > .commentList > article textarea {
     width: 100%;
     height: 60px;
     padding: 6px;
@@ -358,8 +357,17 @@ main {
     border: 0;
     background: transparent;
 }
-.view > .commentList > article > div {
+
+.view > .commentList > article textarea.modi {
+	border: 1px solid #bbb;
+	background: white;
+}
+
+.view > .commentList > article div {
     text-align: right;
+}
+.view > .commentList > article div > .can {
+	display: none;
 }
 
 .view > .commentList > .empty {
