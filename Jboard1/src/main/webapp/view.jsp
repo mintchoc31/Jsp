@@ -17,8 +17,12 @@
 	
 %>
 <script>
-
 	$(function(){
+		
+		// 댓글 내용 전역변수
+		let comment = '';
+		
+		
 		// 댓글 수정
 		$('.mod').click(function(e){
 			e.preventDefault();
@@ -26,27 +30,45 @@
 			const txt = $(this).text();
 			
 			if(txt == '수정'){
+				comment = $(this).parent().prev().val();
+				
+				// 수정모드 전환
 				$(this).parent().prev().addClass('modi');
 				$(this).parent().prev().attr('readonly',false);
 				$(this).parent().prev().focus();
 				$(this).text('수정완료');
 				$(this).prev().show();
 			}else{
-				// 수정완료 클릭
+				// '수정완료' 클릭
 				
-				// 수정 데이터 전송
-				$(this).closest('form').submit();
-				
+				if(confirm('정말 수정하시겠습니까?')){
+					
+					// 수정 데이터 전송
+					$(this).closest('form').submit();
+				}else{
+					$(this).parent().prev().val(comment);
+				}
 				
 				// 수정모드 해제
 				$(this).parent().prev().removeClass('modi');
 				$(this).parent().prev().attr('readonly', true);
 				$(this).text('수정');
 				$(this).prev().hide();
-				
 			}
 		});
 		
+		// 댓글 수정 취소
+		/*
+		$('.can').click(function(e){
+			e.preventDefault();
+			
+			// 수정모드 해제
+			$(this).parent().prev().removeClass('modi');
+			$(this).parent().prev().attr('readonly', true);
+			$(this).hide();
+			$(this).next().text('수정');
+		});
+		*/
 		
 		// 댓글 삭제
 		$('.del').click(function(){
@@ -63,7 +85,7 @@
 		// 댓글쓰기 취소
 		// Javascript 방식
 		const commentContent = document.querySelector('form > textarea[name=content]');
-		const btnCancel = document.JquerySelector('.btnCancel');
+		const btnCancel = document.querySelector('.btnCancel');
 		btnCancel.onclick = function(e){
 			e.preventDefault();
 			commentContent.value = '';
@@ -124,6 +146,8 @@
             <% for(ArticleDTO comment : comments){ %>
             <article class="comment">
             	<form action="/Jboard1/proc/commentUpdate.jsp" method="post">
+            		<input type="hidden" name="no" 	   value="<%= comment.getNo() %>">
+            		<input type="hidden" name="parent" value="<%= comment.getParent() %>">
 	                <span>
 	                    <span><%= comment.getNick() %></span>
 	                    <span><%= comment.getRdate() %></span>
@@ -133,7 +157,7 @@
                 <% if(sessUser.getUid().equals(comment.getWriter())){ %>
                 <div>
                     <a href="/Jboard1/proc/commentDelete.jsp?no=<%= comment.getNo() %>&parent=<%= comment.getParent() %>" class="del">삭제</a>
-                    <a href="#" class="can">수정취소</a>
+                    <a href="/Jboard1/view.jsp?no=<%= no %>" class="can">취소</a>
                     <a href="#" class="mod">수정</a>
                 </div>
                 <% } %>
@@ -150,7 +174,7 @@
         <!-- 댓글입력폼 -->
         <section class="commentForm">
             <h3>댓글쓰기</h3>
-            <form action="/Jboard1/proc/commentProc.jsp" method="post">
+            <form action="/Jboard1/proc/commentInsert.jsp" method="post">
 				<input type="hidden" name="parent" value="<%= no %>"/>
 				<input type="hidden" name="writer" value="<%= sessUser.getUid() %>"/>
 				<textarea name="content"></textarea>
