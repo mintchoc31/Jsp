@@ -13,7 +13,7 @@ import dto.User1DTO;
 public class User1DAO {
 	
 	private final String HOST = "jdbc:mysql://3.34.178.254/UserDB";
-	private final String USER = "root";
+	private final String USER = "userdb"; // root -> userdb로 교체
 	private final String PASS = "Mint0531*";
 	
 	public void insertUser1(User1DTO dto) {

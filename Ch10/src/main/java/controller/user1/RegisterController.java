@@ -13,7 +13,6 @@ import dao.User1DAO;
 import dto.User1DTO;
 import service.User1Service;
 
-
 @WebServlet("/user1/register.do")
 public class RegisterController extends HttpServlet {
 

@@ -5,19 +5,23 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.User1DTO;
+import dto.User2DTO;
 import service.User1Service;
+import service.User2Service;
 
+
+@WebServlet("/user2/list.do")
 public class ListController extends HttpServlet {
 
 	private static final long serialVersionUID = -2651683800821644616L;
 
-	private User1Service service = new User1Service();
-	
+	private User2Service service = new User2Service();
 	
 	@Override
 	public void init() throws ServletException {
@@ -26,21 +30,17 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		List<User1DTO> users = service.selectUser1s();
+		List<User2DTO> users = service.selectUser2s();
 		
 		// View에서 users 참조하기 위해 request Scope 저장
 		req.setAttribute("users", users);
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/user1/list.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/user2/list.jsp");
 		dispatcher.forward(req, resp);
-	
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	}
-	
-	
-
 	
 }

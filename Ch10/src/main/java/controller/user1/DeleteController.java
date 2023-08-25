@@ -13,8 +13,7 @@ import service.User1Service;
 @WebServlet("/user1/delete.do")
 public class DeleteController extends HttpServlet {
 	
-
-	private static final long serialVersionUID = 8875015781311013184L; 
+	private static final long serialVersionUID = 8875015781311013184L;
 	// serialVersionUID값 : class명(DeleteConroller)에 커서 - add generated serial name
 	private User1Service service = new User1Service();
 	
