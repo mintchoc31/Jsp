@@ -11,7 +11,6 @@ public class TermsDAO extends DBHelper {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass()); // org.slf4j
 	
-	public void insertTerms() {}
 	
 	public TermsDTO selectTerms() {
 		
@@ -29,7 +28,7 @@ public class TermsDAO extends DBHelper {
 			}
 			close();
 			
-		} catch (Exception e) {
+		}catch (Exception e) {
 			logger.error("selectTerms error : " + e.getMessage());
 		}
 		return dto;

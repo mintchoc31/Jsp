@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import kr.co.jboard2.dto.UserDTO;
 import kr.co.jboard2.service.UserService;
 
@@ -17,6 +20,7 @@ public class RegisterController extends HttpServlet {
 
 	private static final long serialVersionUID = -3937831513474791716L;
 	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	private UserService service = UserService.getInstance();
 	
 	@Override
@@ -34,6 +38,9 @@ public class RegisterController extends HttpServlet {
 		String nick = req.getParameter("nick");
 		String email = req.getParameter("email");
 		String hp = req.getParameter("hp");
+		String zip = req.getParameter("zip");
+		String addr1 = req.getParameter("addr1");
+		String addr2 = req.getParameter("addr2");
 		String regip = req.getRemoteAddr();
 		
 		
@@ -44,6 +51,9 @@ public class RegisterController extends HttpServlet {
 		dto.setNick(nick);
 		dto.setEmail(email);
 		dto.setHp(hp);
+		dto.setZip(zip);
+		dto.setAddr1(addr1);
+		dto.setAddr2(addr2);
 		dto.setRegip(regip);
 
 		service.insertUser(dto);

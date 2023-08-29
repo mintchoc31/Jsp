@@ -15,6 +15,8 @@ public class UserDTO {
 	public String regip;
 	public String regDate;
 	public String leaveDate;
+	
+	
 	public String getUid() {
 		return uid;
 	}

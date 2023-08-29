@@ -7,7 +7,12 @@ public class TermsDTO {
 	
 	public String getPrivacy() {
 		return privacy;
-	}	
+	}
+	
+	public void setPrivacy(String privacy) {
+		this.privacy = privacy;
+	}
+	
 	public String getTerms() {
 		return terms;
 	}
@@ -16,10 +21,6 @@ public class TermsDTO {
 		this.terms = terms;
 	}
 
-	public void setPrivacy(String privacy) {
-		this.privacy = privacy;
-	}
-	
 	
 	
 }
