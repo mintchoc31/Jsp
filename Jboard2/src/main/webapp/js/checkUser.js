@@ -2,12 +2,13 @@
  *  사용자 중복 체크
  */
 
-
-window.onload = function(){
+$(function(){
 	// 아이디 중복체크
 	const inputUid    = document.getElementsByName('uid')[0];
-	const uidResult   = document.getElementByClassName('uidResult')[0];
+	const uidResult   = document.getElementsByClassName('uidResult')[0];
 	const btnCheckUid = document.getElementById('btnCheckUid');
+	
+	if(btnCheckUid != null) {
 	
 	btnCheckUid.onclick = function(){
 		
@@ -56,18 +57,23 @@ window.onload = function(){
 		}// onreadystatechange end
 		
 	}// btnCheckUid onclick end
+}
 	
 	// 닉네임 중복체크
 	$('#btnCheckNick').click(function(){
-	
+		console.log('here...1');
+			
 		const nick = $('input[name=nick]').val();
+		console.log('here...2 : ' + nick);
 		
 		// 별명 유효성 검사
 		if(!nick.match(reNick)){
-				$('.nickResult').css('color', 'red').text('유효한 별명이 아닙니다.');
-				isNickOk = false;
-				return;
+			console.log('here...3');
+			$('.nickResult').css('color', 'red').text('유효한 별명이 아닙니다.');
+			isNickOk = false;
+			return;
 		}
+		console.log('here...4');
 		
 		$.ajax({
 			url:'/Jboard2/user/checkNick.do?nick='+nick,
@@ -75,6 +81,7 @@ window.onload = function(){
 			dataType:'json',
 			success: function(data){
 			
+				console.log('here...5 : ' + data);
 				if(data.result > 0){
 					$('.nickResult').css('color','red').text('이미 사용 중인 별명입니다.');
 					isNickOk = false;
@@ -115,4 +122,5 @@ window.onload = function(){
 		});
 	});
 	
-}//onload end
+
+}); //onload end

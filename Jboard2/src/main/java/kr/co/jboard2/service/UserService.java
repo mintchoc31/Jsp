@@ -51,13 +51,20 @@ public class UserService {
 		return dao.selectCountEmail(email);
 	}
 	
+	public int selectCountNameAndEmail(String name, String email) {
+		return dao.selectCountNameAndEmail(name, email);				
+	}
+
+	public int selectCountUidAndEmail(String uid, String email) {
+		return dao.selectCountUidAndEmail(uid, email);
+	}
 	
 	public UserDTO selectUser(String uid, String pass) {
 		return dao.selectUser(uid, pass);
 	}
 	
-	public UserDTO selectUserByName(String uid, String pass) {
-		return dao.selectUser(uid, pass);
+	public UserDTO selectUserByNameAndEmail(String name, String email) {
+		return dao.selectUserByNameAndEmail(name, email);				
 	}
 	
 	
@@ -70,6 +77,14 @@ public class UserService {
 		dao.updateUser(dto);
 	}
 	
+	public int updateUserPass(String uid, String pass) {
+		return dao.updateUserPass(uid, pass);
+	}
+	
+	public int updateUserForWithdraw(String uid) {
+		return dao.updateUserForWithdraw(uid);
+	}
+	
 	public void deleteUser(String uid) {
 		dao.deleteUser(uid);
 	}
@@ -77,12 +92,12 @@ public class UserService {
 	public int sendCodeByEmail(String receiver) {
 		
 		// 인증코드 생성
-		int code = ThreadLocalRandom.current().nextInt(1000000, 1000000);
+		int code = ThreadLocalRandom.current().nextInt(100000, 1000000);
 		generatedCode = String.valueOf(code);
 		
 		// 기본정보
 		String sender = "mintchoc31@gmail.com";
-		String password = "LiME951753*";
+		String password = "dqnqxvnhkhvsxnku"; // 구글 계정관리 - 보안 - 2단계 인증 - 앱 비밀번호 생성
 		String title = "Jboard2 인증코드입니다.";
 		String content = "<h1>인증코드는" + code + "</h1>";
 		

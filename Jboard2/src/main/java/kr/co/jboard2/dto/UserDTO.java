@@ -2,19 +2,19 @@ package kr.co.jboard2.dto;
 
 public class UserDTO {
 
-	public String uid;
-	public String pass;
-	public String name;
-	public String nick;
-	public String email;
-	public String hp;
-	public String role;
-	public String zip; 
-	public String addr1;
-	public String addr2;
-	public String regip;
-	public String regDate;
-	public String leaveDate;
+	private String uid;
+	private String pass;
+	private String name;
+	private String nick;
+	private String email;
+	private String hp;
+	private String role;
+	private String zip; 
+	private String addr1;
+	private String addr2;
+	private String regip;
+	private String regDate;
+	private String leaveDate;
 	
 	
 	public String getUid() {

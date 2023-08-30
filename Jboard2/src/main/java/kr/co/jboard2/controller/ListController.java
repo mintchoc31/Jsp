@@ -28,7 +28,7 @@ public class ListController extends HttpServlet {
 			RequestDispatcher dispatcher = req.getRequestDispatcher("list.jsp");
 			dispatcher.forward(req, resp);
 		}else {
-			resp.sendRedirect("/jboard2/user/login.do?success=101");
+			resp.sendRedirect("/Jboard2/user/login.do?success=101");
 			
 		}
 		

@@ -11,6 +11,7 @@
     <section class="register">
 
         <form id="formUser" action="/Jboard2/user/register.do" method="post">
+        	<input type="hidden" name="type" value="REGISTER"/>
             <table border="1">
                 <caption>사이트 이용정보 입력</caption>
                 <tr>
@@ -61,7 +62,6 @@
                         <div class="auth">
                             <input type="text" name="auth" placeholder="인증번호 입력"/>
                             <button type="button" id="btnEmailAuth"><img src="../img/chk_confirm.gif" alt="확인"/></button>
-                        	<span class="resultEmail"></span>
                         </div>
                     </td>
                 </tr>

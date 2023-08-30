@@ -12,7 +12,7 @@ let isHpOk    = false;
 // 데이터 검증에 사용하는 정규표현식
 const reUid   = /^[a-z]+[a-z0-9]{4,19}$/g;
 const rePass  = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{5,16}$/;
-const reName  = /^[가-힣]{2,10}$/ 
+const reName  = /^[가-힣]{2,10}$/;
 const reNick  = /^[a-zA-Zㄱ-힣0-9][a-zA-Zㄱ-힣0-9]*$/;
 const reEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 const reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
@@ -34,10 +34,10 @@ $(function(){
 		if(pass1 == pass2){
 			
 			if(pass2.match(rePass)){
-				$('.passResult').css('color', 'green').text('사용할 수 있는 비밀번호 입니다.');
+				$('.passResult').css('color', 'green').text('사용할 수 있는 비밀번호입니다.');
 				isPassOk = true;
 			}else{
-				$('.passResult').css('color', 'red').text('사용할 수 없는 비밀번호 입니다.');
+				$('.passResult').css('color', 'red').text('사용할 수 없는 비밀번호입니다.');
 				isPassOk = false;
 			}
 		}else{
@@ -81,32 +81,32 @@ $(function(){
 	$('#formUser').submit(function(){
 		
 		if(!isUidOk){
-			alert('아이디를 확인하십시요.');
+			alert('아이디를 확인하십시오.');
 			return false; // 폼 전송 취소
 		}
 		
 		if(!isPassOk){
-			alert('비밀번호를 확인하십시요.');
+			alert('비밀번호를 확인하십시오.');
 			return false; // 폼 전송 취소
 		}
 		
 		if(!isNameOk){
-			alert('이름을 확인하십시요.');
+			alert('이름을 확인하십시오.');
 			return false; // 폼 전송 취소
 		}
 		
 		if(!isNickOk){
-			alert('별명을 확인하십시요.');
+			alert('별명을 확인하십시오.');
 			return false; // 폼 전송 취소
 		}
 		
 		if(!isEmailOk){
-			alert('이메일을 확인하십시요.');
+			alert('이메일을 확인하십시오.');
 			return false; // 폼 전송 취소
 		}
 		
 		if(!isHpOk){
-			alert('휴대폰을 확인하십시요.');
+			alert('휴대폰을 확인하십시오.');
 			return false; // 폼 전송 취소
 		}
 		
