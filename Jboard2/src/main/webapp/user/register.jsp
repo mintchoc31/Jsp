@@ -30,7 +30,7 @@
                     <td>비밀번호 확인</td>
                     <td>
                     <input type="password" name="pass2" placeholder="비밀번호 입력 확인"/>
-                    <span></span>
+                    <span class="passResult"></span>
                     </td>
                     
                 </tr>
@@ -41,7 +41,8 @@
                 <tr>
                     <td>이름</td>
                     <td>
-                        <input type="text" name="name" placeholder="이름 입력"/>                        
+                        <input type="text" name="name" placeholder="이름 입력"/>    
+                        <span class="nameResult"></span>                    
                     </td>
                 </tr>
                 <tr>
@@ -67,14 +68,16 @@
                 </tr>
                 <tr>
                     <td>휴대폰</td>
-                    <td><input type="text" name="hp" placeholder="휴대폰 입력"/></td>
-                    <span class="resultHp"></span>
+                    <td>
+                    	<input type="text" name="hp" placeholder="휴대폰 입력"/>
+                   		<span class="resultHp"></span>
+                    </td>
                 </tr>
                 <tr>
                     <td>주소</td>
                     <td>
                         <input type="text" name="zip" placeholder="우편번호"/>
-                        <button type="button"><img src="../img/chk_post.gif" alt="우편번호찾기"/></button>
+                        <button type="button" onclick="zipcode()"><img src="../img/chk_post.gif" alt="우편번호찾기"/></button>
                         <input type="text" name="addr1" placeholder="주소 검색"/>
                         <input type="text" name="addr2" placeholder="상세주소 입력"/>
                     </td>
