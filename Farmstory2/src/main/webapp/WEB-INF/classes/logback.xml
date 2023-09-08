@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- value는 프로젝트 명으로 하면 됨 -->
+	<property name="NAME" value="Farmstory2" />
+	<!-- log파일 경로 설정 -->
+	<property name="DIR" value="c://Temp/logs/" />
+	<property name="SERVER" value="/home/tomcat/logs" />
+
+	<!-- console 출력 -->
+	<appender name="STDOUT"	class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- File 어펜더 -->
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>${DIR}/${NAME}.log</file>
+		<!-- 해당 파일에 계속 이어서 log 기록하는 옵션 -->
+		<append>true</append>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 롤링 어펜더 -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>${SERVER}/${NAME}.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	      <!-- daily rollover -->
+	      <fileNamePattern>l${SERVER}/${NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+	
+	      <!-- keep 30 days' worth of history capped at 3GB total size -->
+	      <maxHistory>30</maxHistory>
+	      <totalSizeCap>3GB</totalSizeCap>
+	
+	    </rollingPolicy>
+	    
+	    <encoder>
+	      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+	    </encoder>
+	  </appender> 
+
+	<root level="info">
+		<!-- 시스템 출력(console) : STDOUT -->
+		<appender-ref ref="ROLLING_DAILY" />
+	</root>
+
+</configuration>
