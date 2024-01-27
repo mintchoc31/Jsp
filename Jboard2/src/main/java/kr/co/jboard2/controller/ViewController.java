@@ -27,7 +27,7 @@ public class ViewController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-String no = req.getParameter("no");
+		String no = req.getParameter("no");
 		
 		// 글 조회
 		ArticleDTO article = service.selectArticle(no);

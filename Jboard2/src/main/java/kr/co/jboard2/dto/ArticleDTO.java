@@ -15,12 +15,20 @@ public class ArticleDTO {
 	
 	// 추가필드
 	private String nick;
+	private FileDTO fileDto;
 	
 	public String getNick() {
 		return nick;
 	}
 	public void setNick(String nick) {
 		this.nick = nick;
+	}
+	
+	public FileDTO getFileDto() {
+		return fileDto;
+	}
+	public void setFileDto(FileDTO fileDto) {
+		this.fileDto = fileDto;
 	}
 	
 	public int getNo() {
@@ -68,15 +76,13 @@ public class ArticleDTO {
 	public int getFile() {
 		return file;
 	}
-	
 	public void setFile(int file) {
 		this.file = file;
 	}
-	
 	public void setFile(String oName) {
 		
 		if(oName != null) {
-			this.file = 1;
+			this.file = 1;	
 		}else {
 			this.file = 0;
 		}
